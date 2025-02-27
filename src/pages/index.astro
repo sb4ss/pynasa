@@ -1,8 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Home from "../views/home.astro"
+import Home from "../views/home.astro";
 ---
 
 <Layout>
+   <div class="space space-1"></div>
+   <div class="space space-2"></div>
+   <div class="space space-3"></div>
     <Home/>
+
 </Layout>
+<style>
+    .space {
+  --size: 1px;
+  --space-layer: 
+    4vw 50vh 0 #ffffff69,
+    4vw 50vh 0 #ffffff91,
+    4vw 50vh 0 #ffffff75;
+  
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  box-shadow: var(--space-layer);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+}
+
+.space {
+   animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
+</style>
+<script>
+    const COLORS = ["#fff2", "#fff4", "#fff7", "#fffc"];
+
+const generateSpaceLayer = (size: string, selector: string, totalStars: number, duration: string) => {
+  const layer = [];
+  for (let i = 0; i < totalStars; i++) {
+    const color = COLORS[~~(Math.random() * COLORS.length)];
+    const x = Math.floor(Math.random() * 100);
+    const y = Math.floor(Math.random() * 100);
+    layer.push(`${x}vw ${y}vh 0 ${color}, ${x}vw ${y + 100}vh 0 ${color}`);
+  }
+  const container = document.querySelector(selector);
+  if (container instanceof HTMLElement) {
+    container.style.setProperty("--size", size);
+    container.style.setProperty("--duration", duration);
+    container.style.setProperty("--space-layer", layer.join(","));
+  }
+};
+
+generateSpaceLayer("2px", ".space-1", 100, "100s");
+generateSpaceLayer("2px", ".space-2", 100, "100s");
+generateSpaceLayer("2px", ".space-3", 25, "100s");
+
+</script>
