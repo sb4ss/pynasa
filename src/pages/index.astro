@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Home from "../views/home.astro";
 import Install from "../views/install.astro";
+import Done from '../views/done.astro';
 ---
 
 <Layout>
@@ -10,6 +11,7 @@ import Install from "../views/install.astro";
    <div class="space space-3"></div>
     <Home/>
     <Install />
+    <Done/>
 </Layout>
 <style>
     .space {
@@ -35,7 +37,7 @@ import Install from "../views/install.astro";
 
 @keyframes move {
   from { transform: translateY(0); }
-  to { transform: translateY(-100vh); }
+  to { transform: translateY(0); }
 }
 </style>
 <script>
@@ -45,8 +47,8 @@ const generateSpaceLayer = (size: string, selector: string, totalStars: number, 
   const layer = [];
   for (let i = 0; i < totalStars; i++) {
     const color = COLORS[~~(Math.random() * COLORS.length)];
-    const x = Math.floor(Math.random() * 100);
-    const y = Math.floor(Math.random() * 100);
+    const x = Math.floor(Math.random() * 200);
+    const y = Math.floor(Math.random() * 200);
     layer.push(`${x}vw ${y}vh 0 ${color}, ${x}vw ${y + 100}vh 0 ${color}`);
   }
   const container = document.querySelector(selector);
