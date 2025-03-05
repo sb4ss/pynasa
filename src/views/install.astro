@@ -2,11 +2,11 @@
 import { Copy } from "../components/Copy";
 ---
 
-<section>
-    <h1>First steps</h1>
+<section id="install"  >
+    <h1 >First steps</h1>
     <h2>Install <p>py</p>nasa</h2>
     <Copy client:load />
-    <a href="#" class="done" >done !</a>
+    <a href="#done" class="done" >done !</a>
 </section>
 <style>
 
@@ -51,6 +51,7 @@ import { Copy } from "../components/Copy";
         margin-top: 20px;
         font-size: 15px;
         text-decoration: none;
+        transition: 0.3s;
     }
 
     .done:hover{
